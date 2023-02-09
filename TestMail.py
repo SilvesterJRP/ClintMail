@@ -31,13 +31,15 @@ def SetUpSMTP():
         print("Login Failed")
     return s
 
+
 def GetMailBody():
-    mailBody ="<html><body>"
+    mailBody = "<html><body>"
     mailBody = mailBody + config.get("MailSettings","bodyHeader")
     mailBody = mailBody + config.get("MailSettings","bodyTxt")
     mailBody = mailBody + config.get("MailSettings","bodyFooter")
     mailBody = mailBody + "<\body></html>"
     return mailBody
+
 
 def AttachTheFile(filename, filepath):
     from email import encoders
@@ -56,6 +58,7 @@ def AttachTheFile(filename, filepath):
     
     p.add_header('Content-Disposition', "attachment; filename= %s" % filename)
     return p
+    
 
 def SendEMail():
 
